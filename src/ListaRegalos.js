@@ -4,7 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./ListaRegalos.css";
 
-const API_BASE = process.env.REACT_APP_API_BASE || "http://localhost:8080";
+const API_URL = process.env.REACT_APP_API_URL;
 
 export default function ListaRegalos({ onSeleccionarRegalo }) {
   const [regalos, setRegalos] = useState([]);
@@ -14,7 +14,7 @@ export default function ListaRegalos({ onSeleccionarRegalo }) {
 
   useEffect(() => {
     axios
-      .get(`${API_BASE}/api/regalos`)
+      .get(`${API_URL}/api/regalos`)
       .then((res) => {
         if (Array.isArray(res.data) && res.data.length > 0) {
           setRegalos(res.data);

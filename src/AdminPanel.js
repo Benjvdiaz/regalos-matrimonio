@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const API_BASE = process.env.REACT_APP_API_BASE || "http://localhost:8080";
+const API_URL = process.env.REACT_APP_API_URL;
 
 export default function AdminPanel() {
   const [compras, setCompras] = useState([]);
@@ -10,7 +10,7 @@ export default function AdminPanel() {
   // Función para cargar todas las compras
   const fetchCompras = async () => {
     try {
-      const res = await axios.get(`${API_BASE}/api/compras`, { withCredentials: true });
+      const res = await axios.get(`${API_URL}/api/compras`, { withCredentials: true });
       const comprasTransformadas = res.data.map((c) => ({
         ...c,
         montoPagado: Number(c.montoPagado),
@@ -30,7 +30,7 @@ export default function AdminPanel() {
   const confirmarPago = async (id) => {
     try {
       const res = await axios.put(
-        `${API_BASE}/api/compras/${id}/confirmar-pago`,
+        `${API_URL}/api/compras/${id}/confirmar-pago`,
         {},
         { withCredentials: true }
       );
@@ -50,7 +50,7 @@ export default function AdminPanel() {
   const eliminarCompra = async (id) => {
     if (!window.confirm("¿Seguro que deseas eliminar esta compra?")) return;
     try {
-      const res = await axios.delete(`${API_BASE}/api/compras/${id}`, { withCredentials: true });
+      const res = await axios.delete(`${API_URL}/api/compras/${id}`, { withCredentials: true });
       if (res.status === 200) {
         alert(res.data.mensaje || "Compra eliminada correctamente");
         fetchCompras();

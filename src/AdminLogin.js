@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const API_BASE = process.env.REACT_APP_API_BASE || "http://localhost:8080";
+const API_URL = process.env.REACT_APP_API_URL;
 
 export default function AdminLogin() {
   const [username, setUsuario] = useState("");
@@ -14,7 +14,7 @@ export default function AdminLogin() {
     e.preventDefault();
     setError(""); // Limpiar error previo
     try {
-      const res = await axios.post(`${API_BASE}/api/admin/login`, {
+      const res = await axios.post(`${API_URL}/api/admin/login`, {
         username,
         password,
       }, { withCredentials: true });

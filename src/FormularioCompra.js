@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const API_BASE = process.env.REACT_APP_API_BASE || "http://localhost:8080";
+const API_URL = process.env.REACT_APP_API_URL;
 
 export default function FormularioCompra({ regalo, onCancelar }) {
   const [nombre, setNombre] = useState("");
@@ -33,7 +33,7 @@ export default function FormularioCompra({ regalo, onCancelar }) {
         montoPagado: regalo.precio,
       };
 
-      const res = await axios.post(`${API_BASE}/api/compras`, payload);
+      const res = await axios.post(`${API_URL}/api/compras`, payload);
       console.log("Respuesta del backend:", res.data);
 
       setTipo("success");
