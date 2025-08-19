@@ -17,7 +17,7 @@ export default function AdminLogin() {
       const res = await axios.post(`${API_URL}/api/admin/login`, {
         username,
         password,
-      }, { withCredentials: true });
+      }, { withCredentials: false });
 
       if (res.data.success) {
         localStorage.setItem("isAuthenticated", "true");
