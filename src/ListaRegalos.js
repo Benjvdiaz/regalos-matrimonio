@@ -4,7 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./ListaRegalos.css";
 
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = "https://tienda-online-boda-eli-y-seba.onrender.com";
 
 export default function ListaRegalos({ onSeleccionarRegalo }) {
   const [regalos, setRegalos] = useState([]);

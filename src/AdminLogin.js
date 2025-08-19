@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = "https://tienda-online-boda-eli-y-seba.onrender.com";
 
 export default function AdminLogin() {
   const [username, setUsuario] = useState("");
