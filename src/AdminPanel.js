@@ -50,7 +50,7 @@ export default function AdminPanel() {
   const eliminarCompra = async (id) => {
     if (!window.confirm("¿Seguro que deseas eliminar esta compra?")) return;
     try {
-      const res = await axios.delete(`${API_URL}/api/compras/${id}`, { withCredentials: true });
+      const res = await axios.delete(`${API_URL}/api/compras/${id}`, { withCredentials: false });
       if (res.status === 200) {
         alert(res.data.mensaje || "Compra eliminada correctamente");
         fetchCompras();
