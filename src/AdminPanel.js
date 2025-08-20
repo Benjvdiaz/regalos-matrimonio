@@ -10,7 +10,7 @@ export default function AdminPanel() {
   // Función para cargar todas las compras
   const fetchCompras = async () => {
     try {
-      const res = await axios.get(`${API_URL}/api/compras`, { withCredentials: true });
+      const res = await axios.get(`${API_URL}/api/compras`, { withCredentials: false });
       const comprasTransformadas = res.data.map((c) => ({
         ...c,
         montoPagado: Number(c.montoPagado),
@@ -32,7 +32,7 @@ export default function AdminPanel() {
       const res = await axios.put(
         `${API_URL}/api/compras/${id}/confirmar-pago`,
         {},
-        { withCredentials: true }
+        { withCredentials: false }
       );
       if (res.status === 200) {
         alert(res.data.mensaje || "Pago confirmado correctamente");
